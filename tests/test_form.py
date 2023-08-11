@@ -25,8 +25,14 @@ def test_form_submission(setup_browser):
     browser.element('#react-select-4-input').type('delhi').press_enter()
     browser.element('#submit').press_enter()
     browser.element('#example-modal-sizes-title-lg').should(have.text('Thanks for submitting the form'))
-    browser.element('.table').should(have.text('test_name test_lastName' and 'test@mail.com' and 'Male' and
-                                               '1234567890' and '1 January,1999' and 'Maths' and 'Music' and
-                                               'cat.png' and
-                                               'test' and 'NCR Delhi'))
+    browser.element('.table').should(have.text('test_name test_lastName')
+                                            .and_(have.text('test@mail.com'))
+                                            .and_(have.text('Male'))
+                                            .and_(have.text('1234567890'))
+                                            .and_(have.text('19 January,1999'))
+                                            .and_(have.text('Maths'))
+                                            .and_(have.text('Music'))
+                                            .and_(have.text('cat.png'))
+                                            .and_(have.text('test'))
+                                            .and_(have.text('NCR Delhi')))
     print("Выполнено успешно")
