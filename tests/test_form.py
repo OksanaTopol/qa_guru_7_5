@@ -12,19 +12,20 @@ def test_form_submission(setup_browser):
     registration_page.fill_first_name('test_name')
     registration_page.fill_last_name('test_lastName')
     registration_page.fill_email('test@mail.com')
-    registration_page.select_gender()
+    registration_page.select_gender('Male')
     registration_page.fill_user_number('1234567890')
-    registration_page.fill_date_of_birth()
+    registration_page.fill_date_of_birth('01', 'January', '1999')
     registration_page.select_subject('Maths')
-    registration_page.select_hobbies()
-    registration_page.upload_picture('resources/cat.png')
+    registration_page.select_hobbies('Music')
+    registration_page.upload_picture('cat.png')
     registration_page.insert_address("test")
     registration_page.select_state('ncr')
     registration_page.select_city('delhi')
     registration_page.submit()
     registration_page.check_submitting_the_form()
-    registration_page.check_input_data()
-
+    registration_page.check_input_data('test_name', 'test_lastName', 'test@mail.com', 'Male',
+                                               '1234567890', '01 January,1999', 'Maths', 'Music',
+                                                'cat.png','test', 'NCR', 'Delhi')
 
 
     # #open
