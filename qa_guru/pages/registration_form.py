@@ -64,7 +64,7 @@ class RegistrationPage:
                                                    number, date, subject, hobby,
                                                    picture, address, state, city):
         browser.element('.table').all('td').even.should(
-            have.exact_texts((f'{first_name}, {last_name}', email, gender,
+            have.exact_texts((f'{first_name} {last_name}', email, gender,
                                                    number,date, subject, hobby,
                                                    picture,
                                                    address, f'{state} {city}')))
