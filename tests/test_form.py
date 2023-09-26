@@ -1,11 +1,19 @@
 import os
 
+import allure
+from allure_commons.types import Severity
 from selene import browser
 from selene.support.conditions import have, be
 
 from qa_guru.pages.registration_form import RegistrationPage
 
 
+
+@allure.tag('web')
+@allure.severity(Severity.MINOR)
+@allure.label('owner', 'aksana')
+@allure.feature('Allure')
+@allure.story('Allure with steps')
 def test_form_submission(setup_browser):
     registration_page = RegistrationPage()
     registration_page.open()

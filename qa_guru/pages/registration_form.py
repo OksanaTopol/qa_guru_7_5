@@ -33,12 +33,15 @@ class RegistrationPage:
     def fill_user_number(self, value):
         browser.element('#userNumber').should(be.blank).type(value)
 
-    @allure.step("Fill  email")
+    @allure.step("Fill  date of birth")
     def fill_date_of_birth(self, day, month, year):
         browser.element('#dateOfBirthInput').click()
-        browser.element('.react-datepicker__month-select').send_keys(month)
-        browser.element('.react-datepicker__year-select').send_keys(year)
-        browser.element(f'.react-datepicker__day--0{day}:not(.react-datepicker__day--outside-month)').click()
+        with allure.step('fill month'):
+            browser.element('.react-datepicker__month-select').send_keys(month)
+        with allure.step('fill year'):
+            browser.element('.react-datepicker__year-select').send_keys(year)
+        with allure.step('fill day'):
+            browser.element(f'.react-datepicker__day--0{day}:not(.react-datepicker__day--outside-month)').click()
 
     @allure.step("Select subject")
     def select_subject(self, value):
