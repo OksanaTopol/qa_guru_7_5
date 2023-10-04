@@ -1,7 +1,15 @@
+import allure
+from allure_commons.types import Severity
+
 from qa_guru.data.user import User
 from qa_guru.pages.registration_form import RegistrationPage
 
 
+@allure.tag('web')
+@allure.severity(Severity.MINOR)
+@allure.label('owner', 'aksana')
+@allure.feature('Allure')
+@allure.story('Allure with steps')
 def test_form_submission(setup_browser):
     student = User(first_name='test_name',
                    last_name='test_lastName',

@@ -1,16 +1,19 @@
 import os
 
+import allure
 from selene import browser, be, have
 
 import tests
 
 
 class RegistrationPage:
+    @allure.step("Open  main page")
     def open(self):
         browser.open('/automation-practice-form')
         browser.execute_script('document.querySelector("#fixedban").remove()')
         browser.element('footer').execute_script('element.remove()')
 
+    @allure.step("Fill first name")
     def fill_first_name(self, value):
         browser.element('#firstName').should(be.blank).type(value)
 
