@@ -17,6 +17,7 @@ RESOURCE_PATH = os.path.abspath(os.path.join(PROJECT_ROOT_PATH, 'resources'))
 def load_env():
     load_dotenv()
 
+@pytest.fixture(scope="function")
 def setup_browser():
 
     browser.config.base_url = 'https://demoqa.com'
