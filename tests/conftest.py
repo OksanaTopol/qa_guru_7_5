@@ -1,6 +1,7 @@
 import pytest
 import os
 
+from dotenv import load_dotenv
 from selene import browser
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
@@ -13,6 +14,9 @@ print(PROJECT_ROOT_PATH)
 RESOURCE_PATH = os.path.abspath(os.path.join(PROJECT_ROOT_PATH, 'resources'))
 
 @pytest.fixture(scope="function", autouse=True)
+def load_env():
+    load_dotenv()
+
 def setup_browser():
 
     browser.config.base_url = 'https://demoqa.com'
@@ -29,9 +33,10 @@ def setup_browser():
         }
     }
     options.capabilities.update(selenoid_capabilities)
+    login = os.getenv('LOGIN')
+    password = os.getenv('PASSWORD')
     driver = webdriver.Remote(
-        command_executor=f"https://user1:1234@selenoid.autotests.cloud/wd/hub",
-        options=options
+        command_executor=f"https://{login}:{password}@selenoid.autotests.cloud/wd/hub",
     )
 
     browser.config.driver = driver
